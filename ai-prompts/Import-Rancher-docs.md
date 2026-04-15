@@ -22,4 +22,4 @@ Convert `xref:` calls that point to a relative path into external `link:` calls.
 
 *   Derive the new URL by appending the relative path to the base URL found in the file's top comment.
 *   Replace the `.adoc` file extension with `.html`.
-*   Match cross references that start with underline such as '_features_for_all_registered_clusters' with the right section by its name and prepend the section with corresponding ID such as [#_features_for_all_registered_clusters]
+*   Match cross references that start with underline such as 'features-for-all-registered-clusters' with the right section by its name and prepend the section with corresponding ID such as [#features-for-all-registered-clusters]

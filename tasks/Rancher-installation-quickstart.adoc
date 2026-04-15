@@ -118,17 +118,17 @@ There are three recommended options for the source of the certificate used for T
 
 | Rancher Generated Certificates (Default)
 | `ingress.tls.source=rancher`
-| <<_4_install_cert_manager,yes>>
+| <<install-cert-manager,yes>>
 
 | Let's Encrypt
 | `ingress.tls.source=letsEncrypt`
-| <<_4_install_cert_manager,yes>>
+| <<install-cert-manager,yes>>
 
 | Certificates from Files
 | `ingress.tls.source=secret`
 | no
 |===
-[#_4_install_cert_manager]
+[#install-cert-manager]
 === 4. Install cert-manager
 
 ____

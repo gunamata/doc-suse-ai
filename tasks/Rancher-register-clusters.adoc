@@ -27,7 +27,7 @@ endif::[]
 
 The cluster registration feature replaced the feature to import clusters.
 
-The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see <<_management_capabilities_for_registered_clusters,Management Capabilities for Registered Clusters.>>
+The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see <<management-capabilities-for-registered-clusters,Management Capabilities for Registered Clusters.>>
 
 == Prerequisites
 
@@ -81,7 +81,7 @@ endif::[]
 . If you are importing a generic Kubernetes cluster in Rancher, perform the following steps for setup:
 .. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-deployment/about-rancher-agents.html[rancher cluster agent]. The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 .. Enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. Users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
-.. <<_configuring_version_management_for_suse_rancher_prime_rke2_and_suse_rancher_prime_k3s_clusters,Configure the version management feature for imported RKE2 and K3s clusters>>.
+.. <<configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters,Configure the version management feature for imported RKE2 and K3s clusters>>.
 . Click *Create*.
 . The prerequisite for `cluster-admin` privileges is shown (see *Prerequisites* above), including an example command to fulfil the prerequisite.
 . Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
@@ -149,21 +149,21 @@ resource "rancher2_cluster" "my-eks-to-import" {
 
 You can find additional examples for other cloud providers in the https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster[Rancher2 Terraform Provider documentation].
 
-[#_management_capabilities_for_registered_clusters]
+[#management-capabilities-for-registered-clusters]
 == Management Capabilities for Registered Clusters
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster.
 
-* <<_features_for_all_registered_clusters,Features for All Registered Clusters>>
-* <<_additional_features_for_registered_rke2_and_k3s_clusters,Additional Features for Registered RKE2 and K3s Clusters>>
+* <<features-for-all-registered-clusters,Features for All Registered Clusters>>
+* <<additional-features-for-registered-rke2-and-k3s-clusters,Additional Features for Registered RKE2 and K3s Clusters>>
 ifeval::["{build-type}" != "srfa"]
-* <<_additional_features_for_registered_eks_aks_and_gke_clusters,Additional Features for Registered EKS, AKS and GKE Clusters>>
+* <<additional-features-for-registered-eks-aks-and-gke-clusters,Additional Features for Registered EKS, AKS and GKE Clusters>>
 endif::[]
 ifeval::["{build-type}" == "srfa"]
 * <<_additional_features_for_registered_eks_clusters,Additional Features for Registered EKS Clusters>>
 endif::[]
 
-[#_features_for_all_registered_clusters]
+[#features-for-all-registered-clusters]
 === Features for All Registered Clusters
 
 After registering a cluster, the cluster owner can:
@@ -174,7 +174,7 @@ After registering a cluster, the cluster owner can:
 * Enable link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/observability/istio/istio.html[Istio]
 * Manage projects and workloads
 
-[#_additional_features_for_registered_rke2_and_k3s_clusters]
+[#additional-features-for-registered-rke2-and-k3s-clusters]
 === Additional Features for Registered {rke2} and {k3s} Clusters
 
 https://documentation.suse.com/cloudnative/k3s/latest/en/introduction.html[K3s] is a lightweight, fully compliant Kubernetes distribution for edge installations.
@@ -182,15 +182,15 @@ https://documentation.suse.com/cloudnative/k3s/latest/en/introduction.html[K3s] 
 https://documentation.suse.com/cloudnative/rke2/latest/en/introduction.html[RKE2] is Rancher's next-generation Kubernetes distribution for datacenter and cloud installations.
 
 When an RKE2 or K3s cluster is registered in Rancher, Rancher will recognize it.
-The Rancher UI will expose features available to <<_features_for_all_registered_clusters,all registered clusters>>, along with the following options for editing and upgrading the cluster:
+The Rancher UI will expose features available to <<features-for-all-registered-clusters,all registered clusters>>, along with the following options for editing and upgrading the cluster:
 
-* Enable or disable <<_configuring_version_management_for_suse_rancher_prime_rke2_and_suse_rancher_prime_k3s_clusters,version management>>
+* Enable or disable <<configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters,version management>>
 * link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-admin/backups-and-restore/backups-and-restore.html[Upgrade the Kubernetes version] when version management is enabled
-* Configure the <<_configuring_suse_rancher_prime_rke2_and_suse_rancher_prime_k3s_cluster_upgrades,upgrade strategy>> when version management is enabled
+* Configure the <<configuring-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-cluster-upgrades,upgrade strategy>> when version management is enabled
 * View a read-only version of the cluster’s configuration arguments and environment variables used to launch each node
 
 ifeval::["{build-type}" != "srfa"]
-[#_additional_features_for_registered_eks_aks_and_gke_clusters]
+[#additional-features-for-registered-eks-aks-and-gke-clusters]
 === Additional Features for Registered EKS, AKS, and GKE Clusters
 
 Rancher handles registered EKS, AKS, or GKE clusters similarly to clusters created in Rancher. However, Rancher doesn't destroy registered clusters when you delete them through the Rancher UI.
@@ -209,7 +209,7 @@ endif::[]
 
 See link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-deployment/cluster-deployment.html[Cluster Management Capabilities by Cluster Type] for more information about what features are available for managing registered clusters.
 
-[#_configuring_version_management_for_suse_rancher_prime_rke2_and_suse_rancher_prime_k3s_clusters]
+[#configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters]
 == Configuring Version Management for {rke2} and {k3s} Clusters
 
 [WARNING]
@@ -233,7 +233,7 @@ If version management is enabled for a cluster, Rancher will deploy the `system-
 If version management is disabled, Rancher will remove these components from the cluster.
 ====
 
-[#_configuring_suse_rancher_prime_rke2_and_suse_rancher_prime_k3s_cluster_upgrades]
+[#configuring-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-cluster-upgrades]
 == Configuring {rke2} and {k3s} Cluster Upgrades
 
 [TIP]

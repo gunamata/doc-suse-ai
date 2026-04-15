@@ -28,7 +28,7 @@ endif::[]
 :override-abstract!:
 :override-title!:
 
-[#_host_os_requirements]
+[#host-os-requirements]
 == Host OS requirements
 
 To expose the GPU to the pod correctly, the NVIDIA kernel drivers and the `libnvidia-ml` library must be correctly installed in the host OS. The NVIDIA Operator can automatically install drivers and libraries on some operating systems. Refer to the NVIDIA documentation for information on https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html#supported-operating-systems-and-kubernetes-platforms[supported operating system releases]. The installation of the NVIDIA components on your host OS is out of the scope of this documentation, refer to the NVIDIA documentation for instructions.
@@ -119,7 +119,7 @@ After one minute approximately, you can perform the following checks to verify t
 kubectl get node $NODENAME -o jsonpath='{.metadata.labels}' | grep "nvidia.com/gpu.deploy.driver"
 ----
 +
-You should see the value `pre-installed`. If you see `true`, the drivers were not correctly installed. If the <<_host_os_requirements,pre-requirements>> were correct, it is possible that you forgot to reboot the node after installing all packages.
+You should see the value `pre-installed`. If you see `true`, the drivers were not correctly installed. If the <<host-os-requirements,pre-requirements>> were correct, it is possible that you forgot to reboot the node after installing all packages.
 +
 You can also check other driver labels with:
 +

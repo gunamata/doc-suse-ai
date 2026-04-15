@@ -37,7 +37,7 @@ The steps to set up an air-gapped Kubernetes cluster on RKE2 or K3s are shown be
 --
 In this guide, we are assuming you have created your nodes in your air-gapped environment and have a secure Docker private registry on your bastion server.
 
-[#_1_create_rke2_configuration]
+[#create-rke2-configuration]
 == 1. Create RKE2 configuration
 
 Create the `config.yaml` file at `/etc/rancher/rke2/config.yaml`. This will contain all the configuration options necessary to create a highly available RKE2 cluster.
@@ -67,7 +67,7 @@ For more information, refer to the https://documentation.suse.com/cloudnative/rk
 RKE2 additionally provides a `resolv-conf` option for kubelets, which may help with configuring DNS in air-gap networks.
 ====
 
-[[_2_create_registry_yaml]]
+[[create-registry-yaml]]
 == 2. Create Registry YAML
 
 Create the `registries.yaml` file at `/etc/rancher/rke2/registries.yaml`. This will tell RKE2 the necessary details to connect to your private registry.
@@ -94,7 +94,7 @@ configs:
 For more information on private registries configuration file for RKE2, refer to the https://documentation.suse.com/cloudnative/rke2/latest/en/install/containerd_registry_configuration.html[RKE2 documentation.]
 
 
-[[_3_install_rke2]]
+[[install-rke2]]
 == 3. Install RKE2
 
 Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the link:https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/[SUSE Rancher Support Matrix].
@@ -124,7 +124,7 @@ systemctl start rke2-server.service
 
 For more information, refer to the https://documentation.suse.com/cloudnative/rke2/latest/en/install/airgap.html[RKE2 documentation].
 
-[[_4_save_and_start_using_the_kubeconfig_file]]
+[[save-and-start-using-the-kubeconfig-file]]
 == 4. Save and Start Using the kubeconfig File
 
 When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
@@ -165,7 +165,7 @@ kubectl --kubeconfig ~/.kube/config/rke2.yaml get pods --all-namespaces
 
 For more information about the `kubeconfig` file, refer to the https://documentation.suse.com/cloudnative/rke2/latest/en/cluster_access.html[RKE2 documentation] or the https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/[official Kubernetes documentation] about organizing cluster access using `kubeconfig` files.
 
-[#_note_on_upgrading]
+[#note-on-upgrading]
 == Note on Upgrading
 
 Upgrading an air-gap environment can be accomplished in the following manner:
