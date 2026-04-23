@@ -111,7 +111,6 @@ The following {vllm} override file includes basic configuration options.
 * Access to a {huggingface} token (`HF_TOKEN`).
 * The model `meta-llama/Llama-3.1-8B-Instruct` from this example is a gated model that requires you to accept the agreement to access it.
 For more information, see link:https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct[].
-* The `runtimeClassName` specified here is `nvidia`.
 * Update the `storageClass:` entry for each `modelSpec`.
 
 [source,yaml]
@@ -121,7 +120,6 @@ global:
   imagePullSecrets:
   - application-collection
 servingEngineSpec:
-  runtimeClassName: "nvidia"
   modelSpec:
   - name: "llama3" <.>
     registry: "dp.apps.rancher.io" <.>
@@ -263,7 +261,6 @@ global:
   imagePullSecrets:
   - application-collection
 servingEngineSpec:
-  runtimeClassName: "nvidia"
   modelSpec:
   - name: "llama3"
     registry: "dp.apps.rancher.io"
@@ -383,7 +380,6 @@ global:
   imagePullSecrets:
   - application-collection
 servingEngineSpec:
-  runtimeClassName: "nvidia"
   modelSpec:
   - name: "mistral"
     registry: "dp.apps.rancher.io"
@@ -432,7 +428,6 @@ global:
   imagePullSecrets:
   - application-collection
 servingEngineSpec:
-  runtimeClassName: "nvidia"
   modelSpec:
   - name: "mistral"
     registry: "dp.apps.rancher.io"
