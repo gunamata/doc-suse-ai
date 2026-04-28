@@ -1,4 +1,11 @@
 <revhistory xml:id="rh-ai-deployment-airgapped">
+  <revision><date>2026-04-28</date>
+    <revdescription>
+      <para>
+        Extended the airgapped deployment to cover the majority of AI applications
+      </para>
+    </revdescription>
+  </revision>
   <revision><date>2026-03-09</date>
     <revdescription>
       <para>
