@@ -4,6 +4,13 @@
 :revdate: 2025-12-22
 :page-revdate: {revdate}
 
+ifeval::["{PROF_DEPLOYMENT}" == "standard"]
+:imgRegistry: {empty}
+endif::[]
+ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
+:imgRegistry: imageRegistry: <LOCAL_DOCKER_REGISTRY_URL>:5043
+endif::[]
+
 {milvus} is a scalable, high-performance vector database designed for AI applications.
 It enables efficient organization and searching of massive unstructured datasets, including text, images and multi-modal content.
 This procedure walks you through the installation of {milvus} and its dependencies.
@@ -51,12 +58,12 @@ As a template, you can use the `values.yaml` file that is included in the `chart
 ====
 endif::[]
 +
-ifeval::["{PROF_DEPLOYMENT}" == "standard"]
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 cluster:
   enabled: true
 standalone:
@@ -110,68 +117,6 @@ extraConfigFiles: <.>
 ----
 <.> The `extraConfigFiles` section is optional, required only to receive telemetry data from {owui}.
 <.> The URL of the {otelemetry} Collector installed by the user.
-endif::[]
-ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
-[source,yaml]
-----
-global:
-  imagePullSecrets:
-  - application-collection
-  imageRegistry: <LOCAL_DOCKER_REGISTRY_URL>:5043
-cluster:
-  enabled: true
-standalone:
-  persistence:
-    persistentVolumeClaim:
-      storageClassName: "local-path"
-etcd:
-  replicaCount: 1
-  persistence:
-    storageClassName: "local-path"
-minio:
-  mode: distributed
-  replicas: 4
-  rootUser: "admin"
-  rootPassword: "adminminio"
-  persistence:
-    storageClass: "local-path"
-  resources:
-    requests:
-      memory: 1024Mi
-kafka:
-  enabled: true
-  name: kafka
-  replicaCount: 3
-  broker:
-    enabled: true
-  cluster:
-    listeners:
-      client:
-        protocol: 'PLAINTEXT'
-      controller:
-        protocol: 'PLAINTEXT'
-  persistence:
-    enabled: true
-    annotations: {}
-    labels: {}
-    existingClaim: ""
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 8Gi
-    storageClassName: "local-path"
-extraConfigFiles: <.>
-  user.yaml: |+
-    trace:
-      exporter: jaeger
-      sampleFraction: 1
-      jaeger:
-        url: "http://opentelemetry-collector.observability.svc.cluster.local:14268/api/traces" <.>
-----
-<.> The `extraConfigFiles` section is optional, required only to receive telemetry data from {owui}.
-<.> The URL of the {otelemetry} Collector installed by the user.
-endif::[]
 +
 [TIP]
 ====
@@ -195,7 +140,8 @@ ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
 {prompt_user}helm upgrade --install \
   milvus charts/milvus-<X.Y.Z>.tgz \
   -n <SUSE_AI_NAMESPACE> \
-  --version <X.Y.Z> -f <milvus_custom_overrides.yaml>
+  --version <X.Y.Z> \
+  -f <milvus_custom_overrides.yaml>
 ----
 endif::[]
 
@@ -269,7 +215,7 @@ To upgrade {milvus}, identify the new version number and run the following comma
   milvus oci://dp.apps.rancher.io/charts/milvus \
   -n <SUSE_AI_NAMESPACE> \
   --version <VERSION_NUMBER> \
-  -f <milvus_custom_overrides.yaml>
+  -f milvus_custom_overrides.yaml
 ----
 endif::[]
 
@@ -282,3 +228,4 @@ To uninstall {milvus}, run the following command:
 ----
 {prompt_user}helm uninstall milvus -n <SUSE_AI_NAMESPACE>
 ----
+

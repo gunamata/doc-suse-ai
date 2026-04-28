@@ -1,19 +1,27 @@
 [#pytorch-helm-overrides]
 = Examples of {pytorch} {helm} chart override files
-:revdate: 2025-12-22
+:revdate: 2026-03-25
 :page-revdate: {revdate}
 
 include::../snippets/helm-chart-overrides-intro.adoc[]
 
+ifeval::["{PROF_DEPLOYMENT}" == "standard"]
+:imgRegistry: {empty}
+endif::[]
+ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
+:imgRegistry: imageRegistry: <LOCAL_DOCKER_REGISTRY_URL>:5043
+endif::[]
+
 [#pytorch-chart-example-basic]
 .Basic override file with GPU enabled
 ====
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # pytorch_custom_overrides.yaml
 global:
   imagePullSecrets:
     - application-collection <.>
+    {imgRegistry}
 image:
   registry: dp.apps.rancher.io  
   repository: containers/pytorch
@@ -44,12 +52,13 @@ To create a ConfigMap, run the following command:
   MY_CONFIG_MAP -n SUSE_AI_NAMESPACE
 ----
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # pytorch_custom_overrides.yaml
 global:
   imagePullSecrets:
-    - application-collection 
+    - application-collection
+    {imgRegistry}
 image:
   registry: dp.apps.rancher.io <.>
   repository: containers/pytorch
@@ -77,12 +86,13 @@ For production use, we recommend using a storage solution suitable for persisten
 ====
 Move the `entrypoint.sh` file plus any helper files under the `scripts/` directory.
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # pytorch_custom_overrides.yaml
 global:
   imagePullSecrets:
     - application-collection <.>
+    {imgRegistry}
 image:
   registry: dp.apps.rancher.io  
   repository: containers/pytorch
@@ -111,12 +121,13 @@ For production use, we recommend using a storage solution suitable for persisten
 [#pytorch-chart-example-git-public]
 .Git repository clone: public with no authentication
 ====
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # pytorch_custom_overrides.yaml
 global:
   imagePullSecrets:
     - application-collection <.>
+    {imgRegistry}
 image:
   registry: dp.apps.rancher.io  
   repository: containers/pytorch
@@ -146,12 +157,13 @@ For production use, we recommend using a storage solution suitable for persisten
 [#pytorch-chart-example-git-private]
 .Git repository clone: private with authentication
 ====
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # pytorch_custom_overrides.yaml
 global:
   imagePullSecrets:
     - application-collection <.>
+    {imgRegistry}
 image:
   registry: dp.apps.rancher.io  
   repository: containers/pytorch

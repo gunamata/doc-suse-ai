@@ -11,9 +11,9 @@ include::../snippets/openwebui-intro.adoc[]
 Before deploying {owui}, it is important to know more about the supported configurations and documentation.
 The following command provides the corresponding details:
 
-[source,bash]
+[source,bash,subs="+attributes"]
 ----
-helm show values oci://dp.apps.rancher.io/charts/open-webui
+{prompt_user}helm show values oci://dp.apps.rancher.io/charts/open-webui
 ----
 
 Alternatively, you can also refer to the {owui} {helm} chart page on the {sappco} site at link:https://apps.rancher.io/applications/open-webui[].
@@ -35,13 +35,25 @@ Find more details in xref:owui-helm-overrides[].
 For a list of all installation options with examples, refer to xref:owui-helmchart-values[].
 . Install the {owui} {helm} chart using the `owui_custom_overrides.yaml` override file.
 +
+ifeval::["{PROF_DEPLOYMENT}" == "standard"]
+[source,bash,subs="+attributes"]
+----
+{prompt_user}helm upgrade --install \
+  open-webui oci://dp.apps.rancher.io/charts/open-webui \
+  -n <SUSE_AI_NAMESPACE> \
+  -f <owui_custom_overrides.yaml>
+----
+endif::[]
+ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
 [source,bash,subs="+attributes"]
 ----
 {prompt_user}helm upgrade --install \
   open-webui charts/open-webui-<X.Y.Z>.tgz \
   -n <SUSE_AI_NAMESPACE> \
-  --version <X.Y.Z> -f <owui_custom_overrides.yaml>
+  --version <X.Y.Z> \
+  -f <owui_custom_overrides.yaml>
 ----
+endif::[]
 --
 
 ifeval::["{PROF_DEPLOYMENT}" == "standard"]

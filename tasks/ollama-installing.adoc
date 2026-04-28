@@ -6,7 +6,7 @@
 {ollama} is a tool for running and managing language models locally on your computer.
 It offers a simple interface to download, run and interact with models without relying on cloud resources.
 
-[TIP,os=suseai]
+[TIP]
 ====
 When installing {suseai}, {ollama} is installed by the {owui} installation by default.
 If you decide to install {ollama} separately, disable its installation during the installation of {owui} as outlined in xref:owui-ollama-deploy-separate[].
@@ -18,9 +18,9 @@ If you decide to install {ollama} separately, disable its installation during th
 Before deploying {ollama}, it is important to know more about the supported configurations and documentation.
 The following command provides the corresponding details:
 
-[source,bash]
+[source,bash,subs="+attributes"]
 ----
-helm show values oci://dp.apps.rancher.io/charts/ollama
+{prompt_user}helm show values oci://dp.apps.rancher.io/charts/ollama
 ----
 
 Alternatively, you can also refer to the {ollama} {helm} chart page on the {sappco} site at link:https://apps.rancher.io/applications/ollama[].

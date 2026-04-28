@@ -1,7 +1,14 @@
 [#vllm-helm-overrides]
 = Examples of {vllm} {helm} chart override files
-:revdate: 2025-12-22
+:revdate: 2026-03-24
 :page-revdate: {revdate}
+
+ifeval::["{PROF_DEPLOYMENT}" == "standard"]
+:imgRegistry: {empty}
+endif::[]
+ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
+:imgRegistry: imageRegistry: <LOCAL_DOCKER_REGISTRY_URL>:5043
+endif::[]
 
 include::../snippets/helm-chart-overrides-intro.adoc[]
 
@@ -10,11 +17,12 @@ include::../snippets/helm-chart-overrides-intro.adoc[]
 ====
 The following override file installs {vllm} using a model that is publicly available.
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 servingEngineSpec:
   modelSpec:
   - name: "phi3-mini-4k"
@@ -28,15 +36,17 @@ servingEngineSpec:
     requestMemory: "16Gi"
     requestGPU: 1
 ----
+====
 
 .Validating the installation
+====
 . Pulling the images can take a long time.
 You can monitor the status of the {vllm} installation by running the following command:
 +
 [source,bash,subs="+attributes"]
 ----
 {prompt_user}kubectl get pods -n <SUSE_AI_NAMESPACE>
-  
+
 NAME                                           READY   STATUS    RESTARTS   AGE
 [...]
 vllm-deployment-router-7588bf995c-5jbkf        1/1     Running   0          8m9s
@@ -45,7 +55,6 @@ vllm-phi3-mini-4k-deployment-vllm-79d6fdc-tx7  1/1     Running   0          8m9s
 +
 Pods for the {vllm} deployment should transition to the states `Ready` and `Running`.
 
-[.procedure]
 .Validating the stack
 . Expose the `vllm-router-service` port to the host machine:
 +
@@ -113,12 +122,13 @@ The following {vllm} override file includes basic configuration options.
 For more information, see link:https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct[].
 * Update the `storageClass:` entry for each `modelSpec`.
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # vllm_custom_overrides.yaml
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 servingEngineSpec:
   modelSpec:
   - name: "llama3" <.>
@@ -192,6 +202,7 @@ spec:
 ----
 +
 Save it as `pvc-models.yaml` and apply with `kubectl apply -f pvc-models.yaml`.
+
 . Create a secret resource for the {huggingface} token.
 +
 [source,bash,subs="+attributes"]
@@ -200,6 +211,7 @@ Save it as `pvc-models.yaml` and apply with `kubectl apply -f pvc-models.yaml`.
   generic huggingface-credentials \
   --from-literal=HUGGING_FACE_HUB_TOKEN=<HF_TOKEN>
 ----
+
 . Create a YAML specification for prefetching the model and save it as `job-prefetch-llama3.1-8b.yaml`.
 +
 [source,yaml]
@@ -252,14 +264,16 @@ Apply the specification with the following commands:
 {prompt_user}kubectl -n <SUSE_AI_NAMESPACE> \
   wait --for=condition=complete job/prefetch-llama3.1-8b
 ----
+
 . Update the custom {vllm} override file with support for PVC.
 +
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # vllm_custom_overrides.yaml
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 servingEngineSpec:
   modelSpec:
   - name: "llama3"
@@ -292,6 +306,7 @@ servingEngineSpec:
 <.> The mount path must match the base directory of the `servingEngineSpec.modelSpec.modeURL` value specified above.
 +
 Save it as `vllm_custom_overrides.yaml` and apply with `kubectl apply -f vllm_custom_overrides.yaml`.
+
 . The following example lists mounted PVCs for a pod.
 +
 [source,bash,subs="+attributes"]
@@ -315,12 +330,13 @@ Ray is currently not supported.
 Therefore, sharding a single large model across multiple GPUs is not supported.
 =====
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # vllm_custom_overrides.yaml
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 servingEngineSpec:
   modelSpec:
   - name: "llama3"
@@ -373,12 +389,13 @@ These experimental features are only supported on newer GPU generations.
 It is not recommended to enable them without a compelling reason.
 =====
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # vllm_custom_overrides.yaml
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}}
 servingEngineSpec:
   modelSpec:
   - name: "mistral"
@@ -421,12 +438,13 @@ These experimental features are only supported on newer GPU generations.
 It is not recommended to enable them without a compelling reason.
 =====
 
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # vllm_custom_overrides.yaml
 global:
   imagePullSecrets:
   - application-collection
+  {imgRegistry}
 servingEngineSpec:
   modelSpec:
   - name: "mistral"

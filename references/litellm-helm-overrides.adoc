@@ -18,21 +18,29 @@ endif::[]
 :override-abstract!:
 :override-title!:
 
-:revdate: 2026-02-10
+:revdate: 2026-03-25
 :page-revdate: {revdate}
 
 include::../snippets/helm-chart-overrides-intro.adoc[]
 
+ifeval::["{PROF_DEPLOYMENT}" == "standard"]
+:imgRegistry: {empty}
+endif::[]
+ifeval::["{PROF_DEPLOYMENT}" == "airgapped"]
+:imgRegistry: imageRegistry: <LOCAL_DOCKER_REGISTRY_URL>:5043
+endif::[]
+
 [#litellm-chart-example-basic]
 .Basic override file with {postgresql} deployment and master key automatically generated.
 ====
-[source,yaml]
+[source,yaml,subs="+attributes"]
 ----
 # litellm_custom_overrides.yaml
 global:
   imagePullSecrets: 
     - application-collection <.>
     - suse-ai-registry <.>
+    {imgRegistry}
 postgresql:
   persistence:
     storageClassName: "local-path" <.>
