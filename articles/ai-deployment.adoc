@@ -111,9 +111,11 @@ This includes the following methods:
 include::../concepts/ai-node-installer.adoc[leveloffset=+2]
 :override-abstract: {empty}
 include::../tasks/ai-node-installer.adoc[leveloffset=+3]
+
 :override-title: {ailibrary} deployer
 include::../tasks/ai-deployment-ailibrary-deployer.adoc[leveloffset=+2]
 :override-title: Lifecycle manager
+
 include::../concepts/ai-lifecycle-manager.adoc[leveloffset=+2]
 :override-title: Installation using {ranchera} UI
 :override-abstract: {empty}
