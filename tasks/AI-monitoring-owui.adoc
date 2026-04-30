@@ -19,13 +19,13 @@ pipelines:
     storageClass: longhorn <.>
   extraEnvVars: <.>
     - name: PIPELINES_URLS <.>
-      value: "https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/heads/main/integrations/oi-filter/suse_ai_filter.py"
+      value: "https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/tags/v2.0.0/integrations/oi-filter/suse_ai_filter.py"
     - name: OTEL_SERVICE_NAME <.>
       value: "Open WebUI"
     - name: OTEL_EXPORTER_HTTP_OTLP_ENDPOINT <.>
       value: "http://opentelemetry-collector.suse-observability.svc.cluster.local:4318"
     - name: PRICING_JSON <.>
-      value: "https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/heads/main/integrations/oi-filter/pricing.json"
+      value: "https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/tags/v2.0.0/integrations/oi-filter/pricing.json"
 extraEnvVars:
 - name: OPENAI_API_KEY <.>
   value: "0p3n-w3bu!"
@@ -102,7 +102,7 @@ include::../snippets/openwebui-requirement-admin-privileges.adoc[]
 
 . In the bottom left of the {owui} window, click your avatar icon to open the user menu and select menu:Admin Panel[].
 . Click the menu:Settings[] tab and select menu:Pipelines[] from the left menu.
-. In the menu:Install from Github URL[] section, enter `https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/heads/main/integrations/oi-filter/suse_ai_filter.py` and click the upload button on the right to upload the pipeline from the URL.
+. In the menu:Install from Github URL[] section, enter `https://raw.githubusercontent.com/SUSE/suse-ai-observability-extension/refs/tags/v2.0.0/integrations/oi-filter/suse_ai_filter.py` and click the upload button on the right to upload the pipeline from the URL.
 . After the upload is finished, you can review the configuration of the pipeline. Confirm with menu:Save[].
 +
 [#fig-ai-monitoring-owui-pipelines-webui]
