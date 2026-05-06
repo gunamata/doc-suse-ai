@@ -114,37 +114,29 @@ For example, `\https://cyclonedx.org/bom` indicates that a CycloneDX Software Bi
 ====
 
 [#extract-sbom-sregistry]
-.Extracting the CycloneDX SBOM
+.Extracting the CycloneDX SBOM and vulnerability scan (optional)
 ====
 By default, `cosign` wraps attestations in an `in-toto` security envelope.
-
-The following command verifies the attestation signature, unwraps the envelope, decodes the payload, and saves the pure CycloneDX data (`.predicate`) into a local JSON file:
+To programmatically extract the raw CycloneDX SBOM and vulnerability attestations for all architectures of a specific image, you can use the following script.
 
 [source,bash,subs="+attributes"]
 ----
-{prompt_user}docker run --rm \
-  dp.apps.rancher.io/containers/cosign:2 \
-  verify-attestation \
-  --type cyclonedx \
-  --registry-username SUSE_REGISTRY_USERNAME \ <.>
-  --registry-password SUSE_REGISTRY_PASSWORD \ <.>
-  --key https://documentation.suse.com/suse-ai/files/sr-pubkey.pem \
-  registry.suse.com/ai/containers/qdrant:v1.17.0 2>/dev/null \
-  | jq -r '.payload | @base64d | fromjson | .predicate' > qdrant-sbom.json
+{prompt_user} export IMG="registry.suse.com/ai/containers/qdrant:v1.17.0"
+{prompt_user} crane manifest "$IMG" | jq -r '.manifests[] | select(.platform.architecture != "unknown") | "\(.platform.architecture) \(.digest)"' | \
+  while read -r arch dig; do
+    for type in cyclonedx vuln; do
+        echo "Processing $type for $arch..."
+        docker run --rm \
+          dp.apps.rancher.io/containers/cosign:2 verify-attestation \
+            --registry-username "$SUSE_REGISTRY_USERNAME" \ <.>
+            --registry-password "$SUSE_REGISTRY_PASSWORD" \ <.>
+            --key "https://documentation.suse.com/suse-ai/files/sr-pubkey.pem" \
+            --type "$type" \
+            --output json \
+            "${IMG%:*}@$dig" 2>/dev/null | jq -r '.payload | @base64d | fromjson | .predicate' > "${type}-${arch}.json"
+    done
+  done
 ----
 <.> Provide {sregistry} user name.
 <.> Provide {sregistry} password.
-====
-
-[#scan-sbom-sregistry]
-.Scanning the SBOM for Vulnerabilities
-====
-Because the SBOM is now available, you can scan it for known vulnerabilities instantly using a security scanner like Trivy without needing to download or unpack the actual container image.
-
-[source,bash,subs="+attributes"]
-----
-{prompt_user}trivy sbom ./qdrant-sbom.json
-----
-
-Trivy will instantly cross-reference the extracted CycloneDX document against its vulnerability database and output a table of any known CVEs inside the container's OS packages and application libraries.
 ====
