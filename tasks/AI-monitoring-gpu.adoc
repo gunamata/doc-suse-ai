@@ -8,7 +8,7 @@ To effectively monitor the performance and utilization of your GPUs, configure t
 [#ai-monitoring-gpu-metrics]
 .Collect GPU metrics (recommended)
 . *Verify RBAC permissions.* The {otelemetry} Collector requires specific permissions to discover the GPU metrics endpoint within the cluster.
-These permissions are automatically configured when you install the collector with the `clusterRole` section in the `otel-values.yaml` file (see xref:observability-settingup-ai.adoc[]).
+These permissions are automatically configured when you install the collector with the `clusterRole` section in the `otel-values.yaml` file.
 +
 [NOTE]
 ====

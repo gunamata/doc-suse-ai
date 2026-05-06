@@ -97,7 +97,7 @@ OAUTH_CLIENT_SECRET="CLIENT_SECRET"
 == Configuring {owui} for {okta} integration
 
 To configure {owui} to use {okta} as an authentication provider, you must set up specific environment variables.
-For more information about OAuth 2.0 in {owui} and a complete description of each environment variable, refer to link:https://docs.openwebui.com/features/access-security/auth/sso/[{owui} SSO] documentation. 
+For more information about OAuth 2.0 in {owui} and a complete description of each environment variable, refer to link:https://docs.openwebui.com/features/authentication-access/auth/sso/[{owui} SSO] documentation. 
 
 . Add the following environment variables to your {helm} charts `values.yaml` file in the `extraEnvVars` section. 
 +

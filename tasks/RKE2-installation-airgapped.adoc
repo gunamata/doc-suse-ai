@@ -73,7 +73,7 @@ There are two different methods to load the images. Each image loading method ha
 Private registry support honors all settings from the link:https://documentation.suse.com/cloudnative/rke2/latest/en/install/containerd_registry_configuration.html[containerd registry configuration], including endpoint override, transport protocol (HTTP/HTTPS), authentication, certificate verification, and more.
 
 . Add all the required system images to your private registry. A list of images can be obtained from the `.txt` file corresponding to each tarball referenced above. Alternatively, you can `docker load` the airgap image tarballs, then tag and push the loaded images.
-. <<Install-RKE2, Install RKE2>> using the `system-default-registry` parameter, or use the xref:install/containerd_registry_configuration.adoc[containerd registry configuration] to use your registry as a mirror for docker.io.
+. <<Install-RKE2, Install RKE2>> using the `system-default-registry` parameter.
 
 [#Install-RKE2]
 == Install RKE2
