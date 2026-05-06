@@ -133,7 +133,7 @@ To programmatically extract the raw CycloneDX SBOM and vulnerability attestation
             --key "https://documentation.suse.com/suse-ai/files/sr-pubkey.pem" \
             --type "$type" \
             --output json \
-            "${IMG%:*}@$dig" 2>/dev/null | jq -r '.payload | @base64d | fromjson | .predicate' > "${type}-${arch}.json"
+            "${IMG%:*}@$dig" 2>/dev/null | jq -r '.payload | @base64d | fromjson | .predicate' > "$\{type}-$\{arch}.json"
     done
   done
 ----
