@@ -81,7 +81,7 @@ endif::[]
 . If you are importing a generic Kubernetes cluster in Rancher, perform the following steps for setup:
 .. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-deployment/about-rancher-agents.html[rancher cluster agent]. The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 .. Enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. Users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
-.. <<configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters,Configure the version management feature for imported RKE2 and K3s clusters>>.
+.. <<configuring-version-management-for-rke2-and-k3s-clusters,Configure the version management feature for imported RKE2 and K3s clusters>>.
 . Click *Create*.
 . The prerequisite for `cluster-admin` privileges is shown (see *Prerequisites* above), including an example command to fulfil the prerequisite.
 . Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
@@ -184,9 +184,9 @@ https://documentation.suse.com/cloudnative/rke2/latest/en/introduction.html[RKE2
 When an RKE2 or K3s cluster is registered in Rancher, Rancher will recognize it.
 The Rancher UI will expose features available to <<features-for-all-registered-clusters,all registered clusters>>, along with the following options for editing and upgrading the cluster:
 
-* Enable or disable <<configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters,version management>>
+* Enable or disable <<configuring-version-management-for-rke2-and-k3s-clusters,version management>>
 * link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-admin/backups-and-restore/backups-and-restore.html[Upgrade the Kubernetes version] when version management is enabled
-* Configure the <<configuring-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-cluster-upgrades,upgrade strategy>> when version management is enabled
+* Configure the <<configuring-rke2-and-k3s-cluster-upgrades,upgrade strategy>> when version management is enabled
 * View a read-only version of the cluster’s configuration arguments and environment variables used to launch each node
 
 ifeval::["{build-type}" != "srfa"]
@@ -209,7 +209,7 @@ endif::[]
 
 See link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/cluster-deployment/cluster-deployment.html[Cluster Management Capabilities by Cluster Type] for more information about what features are available for managing registered clusters.
 
-[#configuring-version-management-for-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-clusters]
+[#configuring-version-management-for-rke2-and-k3s-clusters]
 == Configuring Version Management for {rke2} and {k3s} Clusters
 
 [WARNING]
@@ -233,7 +233,7 @@ If version management is enabled for a cluster, Rancher will deploy the `system-
 If version management is disabled, Rancher will remove these components from the cluster.
 ====
 
-[#configuring-suse-rancher-prime-rke2-and-suse-rancher-prime-k3s-cluster-upgrades]
+[#configuring-rke2-and-k3s-cluster-upgrades]
 == Configuring {rke2} and {k3s} Cluster Upgrades
 
 [TIP]
