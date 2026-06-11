@@ -23,6 +23,12 @@ endif::[]
 :revdate: 2026-06-10
 :page-revdate: {revdate}
 
+[WARNING]
+.Technology preview
+====
+{kubeflow} is currently available as a Technical Preview in the {productname} stack.
+====
+
 [#kubeflow-installing-app-details]
 == Details about the application
 
