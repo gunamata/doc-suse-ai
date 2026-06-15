@@ -60,7 +60,7 @@ After the installation, obtain the cluster IP and add a local DNS entry:
 192.168.1.100  kubeflow.dev.example.com
 ----
 
-Navigate to: http://kubeflow.dev.example.com.
+Navigate to: \http://kubeflow.dev.example.com.
 
 [#kubeflow-config-scenarios-self-signed-tls]
 == Non-production: Self-signed TLS
