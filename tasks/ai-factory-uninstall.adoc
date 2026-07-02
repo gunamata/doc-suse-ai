@@ -1,0 +1,29 @@
+[#ai-factory-deployment-uninstall]
+include::../common/generic-attributes.adoc[]
+// overridden title?
+ifdef::override-title[]
+= {override-title}
+:revdate: 2026-01-26
+:page-revdate: {revdate}
+endif::[]
+ifndef::override-title[]
+= Uninstalling {productname}
+endif::[]
+// overridden abstract?
+ifdef::override-abstract[]
+{override-abstract}
+endif::[]
+ifndef::override-abstract[]
+{empty}
+endif::[]
+
+// erase the flag for future overrides
+:override-abstract!:
+:override-title!:
+
+To uninstall {productname}, run the following command:
+
+[source,bash,subs="+attributes"]
+----
+{prompt_user}helm uninstall aif-operator -n aif-operator
+----

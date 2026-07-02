@@ -1,0 +1,40 @@
+[#ai-factory-deployment-rancher-ui]
+include::../common/generic-attributes.adoc[]
+// overridden title?
+ifdef::override-title[]
+= {override-title}
+:revdate: 2026-01-26
+:page-revdate: {revdate}
+endif::[]
+ifndef::override-title[]
+= How do I install {productname} using the {ranchera} UI?
+endif::[]
+// overridden abstract?
+ifdef::override-abstract[]
+{override-abstract}
+endif::[]
+ifndef::override-abstract[]
+To deploy {productname} through the graphical interface, add the OCI repository and install the operator chart. This procedure walks you through setting up the repository endpoint and configuring the installation in the {ranchera} UI.
+endif::[]
+
+// erase the flag for future overrides
+:override-abstract!:
+:override-title!:
+
+include::../snippets/ai-rancher-admin-requirement.adoc[]
+
+. *Add a new repository for {productname}.*
+.. From the main left panel, select menu:local[Apps > Repositories].
+.. Select btn:[OCI Repository] and enter your preferred repository name, for example, `suse-aif-operator`.
+.. Enter `oci://ghcr.io/suse/chart/suse-ai-operator` as an OCI repository URL.
+.. Leave `None` for authentication type and confirm with btn:[Create].
+. *Install the `SUSE AI Operator` application.*
+.. Navigate to menu:Apps[Charts] and select the new `suse-aif-operator` filter in the left repository panel.
+.. Click btn:[Refresh all repositories] and the `SUSE AI Operator` application tile appears.
+.. Click the application's tile and then the btn:[Install this version] button.
+.. Select the `aif-operator` namespace and specify name for the workload.
+.. To customize detailed installation options, activate btn:[Customize Helm options before install].
+Confirm with btn:[Next].
+.. Review or update the installation chart and install the application with the btn:[Install] button in the bottom right.
+You can watch the installation progress in the newly opened log window.
+.. Verify that the application is listed in menu:Apps[Installed Apps].

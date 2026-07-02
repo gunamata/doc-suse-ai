@@ -1,0 +1,54 @@
+include::../common/generic-attributes.adoc[]
+= Using {productname}
+:docinfo:
+:experimental:
+
+ifdef::env-github[]
+:imagesdir: ../images/
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+:revdate: 2026-06-08
+:page-revdate: {revdate}
+
+[abstract]
+--
+{productname} is a {ranchera} user interface (UI) extension and a {kube} operator that manages the entire lifecycle of artificial intelligence (AI) workloads.
+Using the {ranchera} UI, you can focus on multiple tasks, for example:
+
+ifeval::["{PROF_PRODUCT}" == "saif"]
+* installing and managing AI applications and blueprints from {ailibrary}
+endif::[]
+ifeval::["{PROF_PRODUCT}" == "saifnv"]
+* installing and managing AI applications and blueprints from {nvidia} catalog
+endif::[]
+* creating and managing custom blueprints
+* managing running workloads
+--
+
+:override-title: What deployment types are available?
+include::../references/ai-factory-apps-deployment-types.adoc[leveloffset=+1]
+
+[#ai-factory-managing-apps]
+:override-title: How do I manage AI applications?
+:override-abstract: {productname} helps you manage the whole lifecycle of AI applications and related workloads on your {kube} cluster.
+include::../tasks/ai-factory-managing-apps.adoc[leveloffset=+1]
+
+[#ai-factory-managing-blueprints]
+:override-title: How do I manage AI blueprints
+:override-abstract: {productname} helps you manage the whole lifecycle of custom and pre-built AI blueprints and related workloads on your {kube} cluster.
+include::../tasks/ai-factory-managing-blueprints.adoc[leveloffset=+1]
+
+
+[appendix]
+include::../references/AI-glossary.adoc[leveloffset=+1]
+
+[appendix]
+include::../common/common_copyright_gfdl.adoc[]
+
+[appendix]
+include::../common/common_license_gfdl1.2.adoc[]

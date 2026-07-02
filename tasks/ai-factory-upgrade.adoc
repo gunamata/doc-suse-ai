@@ -1,0 +1,38 @@
+[#ai-factory-deployment-upgrade]
+include::../common/generic-attributes.adoc[]
+// overridden title?
+ifdef::override-title[]
+= {override-title}
+:revdate: 2026-01-26
+:page-revdate: {revdate}
+endif::[]
+ifndef::override-title[]
+= How do I upgrade {productname} using the {helm} CLI?
+endif::[]
+// overridden abstract?
+ifdef::override-abstract[]
+{override-abstract}
+endif::[]
+ifndef::override-abstract[]
+To upgrade {productname} and its template dependencies, use the {helm} command-line interface. This procedure explains how to apply custom override configurations, automatically pull dependency updates, and safely deploy the latest operator version.
+endif::[]
+
+// erase the flag for future overrides
+:override-abstract!:
+:override-title!:
+
+[IMPORTANT]
+====
+New releases may include breaking changes that require manual intervention. Always review the companion `README` file for release-specific instructions before upgrading.
+====
+
+To upgrade {productname}, identify the target version number and execute the upgrade command:
+
+[source,bash,subs="+attributes"]
+----
+{prompt_user}helm upgrade --install \
+  aif-operator oci://ghcr.io/suse/chart/aif-operator \
+  -n aif-operator \
+  --version <VERSION_NUMBER> \
+  -f aif-operator_custom_overrides.yaml
+----
