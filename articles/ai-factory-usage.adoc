@@ -17,6 +17,8 @@ endif::[]
 
 [abstract]
 --
+include::../snippets/aif-tip-suseai-docs.adoc[]
+
 {productname} is a {ranchera} user interface (UI) extension and a {kube} operator that manages the entire lifecycle of artificial intelligence (AI) workloads.
 Using the {ranchera} UI, you can focus on multiple tasks, for example:
 
@@ -44,11 +46,16 @@ include::../tasks/ai-factory-managing-apps.adoc[leveloffset=+1]
 include::../tasks/ai-factory-managing-blueprints.adoc[leveloffset=+1]
 
 
-[appendix]
+[glossary]
+[#ai-factory-glossary]
 include::../references/AI-glossary.adoc[leveloffset=+1]
 
 [appendix]
-include::../common/common_copyright_gfdl.adoc[]
+[#ai-factory-release-notes]
+:override-title: Release notes
+include::../references/AI-Factory-release-notes.adoc[leveloffset=+1]
 
 [appendix]
-include::../common/common_license_gfdl1.2.adoc[]
+[#ai-factory-appendix]
+include::../references/AI-Factory-appendix.adoc[leveloffset=+1]
+

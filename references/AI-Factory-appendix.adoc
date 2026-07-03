@@ -1,0 +1,62 @@
+include::../common/generic-attributes.adoc[]
+// overridden title?
+ifdef::override-title[]
+= {override-title}
+endif::[]
+ifndef::override-title[]
+= Appendix
+endif::[]
+// overridden abstract?
+ifdef::override-abstract[]
+{override-abstract}
+endif::[]
+ifndef::override-abstract[]
+{empty}
+endif::[]
+
+// erase the flag for future overrides
+:override-abstract!:
+:override-title!:
+
+:revdate: 2026-07-03
+:page-revdate: {revdate}
+
+== Product support lifecycle
+
+Unless explicitly stated, all listed components are Generally Available (GA) and are covered by the standard scope of support from {suse}.
+Some components are Technology Preview. {suse} provides them for evaluation, but they are not covered by standard support policies and are not recommended for production use cases.
+{suse} welcomes feedback and suggestions on improvements to Technology Preview components, but {suse} reserves the right to deprecate a Technology Preview feature before it becomes Generally Available if it does not meet customer needs or does not reach the required maturity.
+
+{suse} must occasionally deprecate features or change API specifications.
+Reasons for feature deprecation or API change could include a feature being updated or replaced by a new implementation, a new feature set, upstream technology is no longer available, or the upstream community has introduced incompatible changes.
+It is not intended that this will ever happen within a given minor release (x.z), and so all z-stream releases will maintain API compatibility and feature functionality.
+{suse} will endeavor to provide deprecation warnings with plenty of notice within the release notes, along with workarounds, suggestions and mitigations to minimize service disruption.
+
+=== Updates
+
+{productname} and related products are updated with a regular cadence, and support for a particular release will be delivered according to the relevant release lifecycle.
+Over time, new releases become generally available, new products may be added, and older products will move through the lifecycle and reach end of life where the customer may continue to use the product within the terms of product licensing agreement.
+For the current lifecycle, please refer to our link:https://www.suse.com/lifecycle[Lifecycle Page].
+If you have any questions about raising a support case, how {suse} classifies severity levels, or the scope of support, see the link:https://www.suse.com/support/handbook/[Technical Support Handbook] and link:https://www.suse.com/support/policy.html[Support Policy].
+
+== Obtaining source code
+
+This {suse} product includes materials licensed to {suse} under the GNU General Public License (GPL) and various other open source licenses.
+The GPL requires {suse} to provide the source code that corresponds to the GPL-licensed material, and {suse} conforms to all other open-source license requirements.
+As such, {suse} makes all source code available, and can generally be found in the link:https://github.com/{suse}/aif[{saifactory} GitHub repository] and the link:https://www.github.com/rancher[{suse} {ranchera} GitHub repository] for dependent components.
+
+== Legal notices
+
+{suse} makes no representations or warranties with regard to the contents or use of this documentation, and specifically disclaims any express or implied warranties of merchantability or fitness for any particular purpose. Further, {suse} reserves the right to revise this publication and to make changes to its content, at any time, without the obligation to notify any person or entity of such revisions or changes.
+
+Further, {suse} makes no representations or warranties with regard to any software, and specifically disclaims any express or implied warranties of merchantability or fitness for any particular purpose. Further, {suse} reserves the right to make changes to any and all parts of {suse} software, at any time, without any obligation to notify any person or entity of such changes.
+
+Any products or technical information provided under this Agreement may be subject to U.S. export controls and the trade laws of other countries. You agree to comply with all export control regulations and to obtain any required licenses or classifications to export, re-export, or import deliverables. You agree not to export or re-export to entities on the current U.S. export exclusion lists or to any embargoed or terrorist countries as specified in U.S. export laws. You agree to not use deliverables for prohibited nuclear, missile, or chemical/biological weaponry end uses. Refer to https://www.suse.com/company/legal/[https://www.suse.com/company/legal/] for more information on exporting {suse} software. {suse} assumes no responsibility for your failure to obtain any necessary export approvals.
+
+*Copyright © 2026 {suse} LLC.*
+
+This document is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License (CC-BY-ND-4.0). You should have received a copy of the license along with this document. If not, see https://creativecommons.org/licenses/by-nd/4.0/[https://creativecommons.org/licenses/by-nd/4.0/].
+
+{suse} has intellectual property rights relating to technology embodied in the product that is described in this document. In particular, and without limitation, these intellectual property rights may include one or more of the U.S. patents listed at https://www.suse.com/company/legal/[https://www.suse.com/company/legal/] and one or more additional patents or pending patent applications in the U.S. and other countries.
+
+For {suse} trademarks, see the {suse} Trademark and Service Mark list (https://www.suse.com/company/legal/[https://www.suse.com/company/legal/]). All third-party trademarks are the property of their respective owners. For {suse} brand information and usage requirements, please see the guidelines published at https://brand.suse.com/[https://brand.suse.com/].

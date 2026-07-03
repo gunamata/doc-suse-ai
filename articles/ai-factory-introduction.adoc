@@ -17,6 +17,8 @@ endif::[]
 
 [abstract]
 --
+include::../snippets/aif-tip-suseai-docs.adoc[]
+
 {productname} is a {ranchera} user interface (UI) extension and a {kube} operator.
 It replaces manual, fragmented application integration with pre-validated, version-controlled blueprints.
 This establishes a standardized and reproducible pipeline for deploying and scaling complex AI workloads on {kube} clusters.
@@ -149,11 +151,16 @@ The workflow is defined by a user role and is different for a user and an admini
   * *Admin Users* install and configure the extension.
   * *Cluster Owners* and *{ranchera} Admin Users* discover, deploy and manage AI applications and blueprints from {suse} image registries, such as {sappco} and {sregistry}, and from the {nvidia} GPU Cloud (NGC) catalog.
 
-[appendix]
+[glossary]
+[#ai-factory-glossary]
 include::../references/AI-glossary.adoc[leveloffset=+1]
 
 [appendix]
-include::../common/common_copyright_gfdl.adoc[]
+[#ai-factory-release-notes]
+:override-title: Release notes
+include::../references/AI-Factory-release-notes.adoc[leveloffset=+1]
 
 [appendix]
-include::../common/common_license_gfdl1.2.adoc[]
+[#ai-factory-appendix]
+include::../references/AI-Factory-appendix.adoc[leveloffset=+1]
+
