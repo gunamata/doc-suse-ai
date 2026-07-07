@@ -100,7 +100,7 @@ image::ai-factory-architecture.png[An image showing a basic structure of {produc
 
 [#ai-factory-foundation]
 === Foundation
-The base layer of {productname} is deployed on bare metal or cloud-hosted nodes, preferably deployed by the {ranchelemental}.
+The base layer of {productname} is deployed on bare metal or cloud-hosted nodes, preferably deployed by the link:https://opensource.suse.com/elemental/[{selemental}].
 It consists of the following components:
 
 * a prescribed configuration of the {slsa} 16 operating system
