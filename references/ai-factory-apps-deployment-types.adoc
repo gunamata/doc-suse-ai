@@ -39,6 +39,6 @@ Use this method for direct installation and manual lifecycle management.
 .{helm} chart size limitation
 ====
 Large {helm} charts may not be supported in {rancher}.
-This is due to a {kube} object-size limit of approximately 1&nbsp;MB.
+This is due to a {kube} object-size limit of approximately 1{nbsp}MB.
 Because {rancher} stores {helm} chart content in {kube} objects, charts whose packaged content exceeds this limit may fail to deploy or upgrade.
 ====
