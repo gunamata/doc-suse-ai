@@ -19,7 +19,7 @@ endif::[]
 --
 include::../snippets/aif-tip-suseai-docs.adoc[]
 
-{productname} is a {ranchera} user interface (UI) extension and a {kube} operator.
+{productname} consists of a {kube} operator and its {ranchera} UI extension.
 It replaces manual, fragmented application integration with pre-validated, version-controlled blueprints.
 This establishes a standardized and reproducible pipeline for deploying and scaling complex AI workloads on {kube} clusters.
 
@@ -110,7 +110,8 @@ It consists of the following components:
 
 [#ai-factory-itself]
 === AI Factory
-{productname} is a {ranchera} UI extension that serves the following purposes:
+{productname} consists of a {kube} operator and its {ranchera} UI extension.
+It serves the following purposes:
 
 ifeval::["{PROF_PRODUCT}" == "saif"]
 * Discover, install and manage individual applications from {ailibrary}.
