@@ -21,7 +21,7 @@ endif::[]
 :revdate: 2026-07-07
 :page-revdate: {revdate}
 
-== Release 2.0.0
+== Release {aif-latest-version}
 
 This is the *first official release* of {productname}, bringing comprehensive AI workload management capabilities to {ranchera}.
 
