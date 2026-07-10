@@ -62,7 +62,7 @@ The source code for the {helm} chart is available in the link:https://github.com
 
 | {certmanager}
 | 1.19.3
-| Refer xref:kubeflow-installing-kubernetes[]
+| Refer to xref:kubeflow-installing-kubernetes[].
 
 | Istio
 | 1.1.3
