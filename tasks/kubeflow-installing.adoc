@@ -26,14 +26,14 @@ endif::[]
 [WARNING]
 .Technology preview
 ====
-{kubeflow} is currently available as a Technical Preview.
+{kubeflow} is currently available as a Technology Preview.
 ====
 
 [#kubeflow-installing-app-details]
 == Details about the application
 
 Before deploying {kubeflow}, it is important to know more about the supported configurations and documentation.
-The following command provides the corresponding details:
+The following command provides the corresponding details, assuming you have already executed the `helm registry login` command as described in xref:suse-ai-deploy-suse-ai[].
 
 [source,subs="+attributes"]
 ----
