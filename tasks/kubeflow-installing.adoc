@@ -43,7 +43,7 @@ The following command provides the corresponding details:
 [TIP]
 .{kubeflow} repository
 ====
-The source code for the Helm chart is available at link:https://github.com/SUSE/suse-ai-charts/tree/main/kubeflow[{kubeflow} repository].
+The source code for the {helm} chart is available in the link:https://github.com/SUSE/suse-ai-charts/tree/main/kubeflow[{kubeflow} repository].
 ====
 
 [#kubeflow-installing-requirements]
